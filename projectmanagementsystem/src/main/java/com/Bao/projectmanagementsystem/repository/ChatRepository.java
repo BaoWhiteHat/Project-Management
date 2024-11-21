@@ -1,2 +1,8 @@
-package com.Bao.projectmanagementsystem.repository;public interface ChatRepository {
+package com.Bao.projectmanagementsystem.repository;
+
+import com.Bao.projectmanagementsystem.modal.Chat;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface ChatRepository extends JpaRepository<Chat, Long> {
+
 }

@@ -1,2 +1,11 @@
-package com.Bao.projectmanagementsystem.request;public class CreateCommentRequest {
+package com.Bao.projectmanagementsystem.request;
+
+import lombok.Data;
+
+@Data
+public class CreateCommentRequest {
+
+    private Long issueId;
+
+    private String content;
 }
