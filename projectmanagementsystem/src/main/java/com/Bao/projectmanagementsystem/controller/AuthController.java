@@ -1,11 +1,13 @@
 package com.Bao.projectmanagementsystem.controller;
 
 import com.Bao.projectmanagementsystem.config.JwtProvider;
+import com.Bao.projectmanagementsystem.modal.Subscription;
 import com.Bao.projectmanagementsystem.modal.User;
 import com.Bao.projectmanagementsystem.repository.UserRepository;
 import com.Bao.projectmanagementsystem.request.LoginRequest;
 import com.Bao.projectmanagementsystem.response.AuthResponse;
 import com.Bao.projectmanagementsystem.service.CustomeUserDetailsImpl;
+import com.Bao.projectmanagementsystem.service.SubscriptionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -33,6 +35,9 @@ public class AuthController {
     @Autowired
     private CustomeUserDetailsImpl customeUserDetails;
 
+    @Autowired
+    private SubscriptionService subscriptionService;
+
     @PostMapping("/signup")
     public ResponseEntity<AuthResponse> createUserHandler(@RequestBody User user) throws Exception {
 
@@ -48,6 +53,8 @@ public class AuthController {
         createdUser.setFullName(user.getFullName());
 
         User savedUser = userRepository.save(createdUser);
+
+        subscriptionService.createSubscription(savedUser);
 
         Authentication authentication = new UsernamePasswordAuthenticationToken(user.getEmail(), user.getPassword());
         SecurityContextHolder.getContext().setAuthentication(authentication);

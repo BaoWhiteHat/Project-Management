@@ -1,2 +1,8 @@
-package com.Bao.projectmanagementsystem.service;public class ChatService {
+package com.Bao.projectmanagementsystem.service;
+
+import com.Bao.projectmanagementsystem.modal.Chat;
+
+public interface ChatService {
+
+    Chat createChat(Chat chat);
 }

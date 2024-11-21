@@ -1,2 +1,14 @@
-package com.Bao.projectmanagementsystem.request;public class CreateMessageRequest {
+package com.Bao.projectmanagementsystem.request;
+
+import lombok.Data;
+
+@Data
+public class CreateMessageRequest {
+
+    private Long senderId;
+
+    private String content;
+
+    private Long projectId;
+
 }

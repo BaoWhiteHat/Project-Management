@@ -1,2 +1,9 @@
-package com.Bao.projectmanagementsystem.service;public class EmailService {
+package com.Bao.projectmanagementsystem.service;
+
+import jakarta.mail.MessagingException;
+import org.springframework.stereotype.Service;
+
+
+public interface EmailService {
+    void sendEmailWithToken(String userEmail, String Link) throws MessagingException;
 }

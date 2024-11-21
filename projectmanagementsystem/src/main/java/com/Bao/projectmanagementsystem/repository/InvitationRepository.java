@@ -1,2 +1,11 @@
-package com.Bao.projectmanagementsystem.repository;public interface InvitationRepository {
+package com.Bao.projectmanagementsystem.repository;
+
+import com.Bao.projectmanagementsystem.modal.Invitation;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface InvitationRepository extends JpaRepository<Invitation, Long> {
+
+    Invitation findByToken(String token);
+
+    Invitation findByEmail(String userEmail);
 }
