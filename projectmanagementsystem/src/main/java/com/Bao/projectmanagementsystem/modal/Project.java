@@ -38,4 +38,17 @@ public class Project {
 
     @ManyToMany
     private List<User> team = new ArrayList<>();
+
+    @Override
+    public String toString() {
+        return "Project{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", category='" + category + '\'' +
+                ", tags=" + tags +
+                ", owner=" + (owner != null ? owner.getId() : null) +
+                ", teamSize=" + (team != null ? team.size() : 0) +
+                '}';
+    }
 }
