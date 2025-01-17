@@ -1,0 +1,17 @@
+# Sử dụng hình ảnh JDK làm base image
+FROM openjdk:17-jdk-slim
+
+# Đặt biến môi trường
+ENV SPRING_PROFILES_ACTIVE=prod
+
+# Tạo thư mục trong container để chứa file JAR
+WORKDIR /app
+
+# Copy file JAR vào container
+COPY target/projectmanagement-0.0.1-SNAPSHOT.jar app.jar
+
+# Expose cổng của ứng dụng (giống với server.port trong application.properties)
+EXPOSE 5454
+
+# Lệnh chạy ứng dụng
+ENTRYPOINT ["java", "-jar", "app.jar"]
